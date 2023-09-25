@@ -3,7 +3,10 @@
   "runtime": "org.gnome.Platform",
   "runtime-version": "45",
   "sdk": "org.gnome.Sdk",
-  "sdk-extensions": ["org.freedesktop.Sdk.Extension.rust-stable"],
+  "sdk-extensions": [
+    "org.freedesktop.Sdk.Extension.rust-stable",
+    "org.freedesktop.Sdk.Extension.llvm16"
+  ],
   "command": "youp",
   "finish-args": [
     "--share=ipc",
@@ -17,7 +20,8 @@
     "--talk-name=org.kde.StatusNotifierWatcher"
   ],
   "build-options": {
-    "append-path": "/usr/lib/sdk/rust-stable/bin",
+    "append-path": "/usr/lib/sdk/llvm16/bin:/usr/lib/sdk/rust-stable/bin",
+    "prepend-ld-library-path": "/usr/lib/sdk/llvm16/lib",
     "env": {
       "CARGO_HOME": "/run/build/youp/cargo"
     }
